@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="helloworld" default="compile" basedir=".">
+<project name="TTT" default="compile" basedir=".">
 
     <target name="clean">
         <delete dir="target" failonerror="true"/>
@@ -36,8 +36,8 @@
     </target>
 
     <target name="install">
-        <echo message="Installing helloworld to ${user.home}/temp/helloworld"/>
-        <copy todir="${user.home}/temp/helloworld" overwrite="true">
+        <echo message="Installing TTT to c:/temp/TTT"/>
+        <copy todir="c:/TTT" overwrite="true">
             <fileset dir="${basedir}/doc">
                 <include name="*"/>
             </fileset>
