@@ -16,9 +16,5 @@ public class GulliTest {
        public void should_winner_gulli() {
        assertEquals(3, new Gulli().winner());
     }
-                  @Test
-       public void einn_plus_einn_jafnt_tveir() {
-       assertEquals(2, new Gulli().plus(1,1));
-    }
 
 }
