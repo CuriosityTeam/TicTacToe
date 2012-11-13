@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="helloworld" default="compile" basedir=".">
+
+    <target name="clean">
+        <delete dir="target" failonerror="true"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="target/classes"/>
+        <javac includeantruntime="false" srcdir="${basedir}/src" includes="**/*.java" destdir="target/classes"/>
+    </target>
+
+    <path id="test.classpath.id">
+        <pathelement location="target/classes"/>
+        <fileset dir="${basedir}/lib">
+            <include name="junit*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="compile-tests">
+        <mkdir dir="target/testclasses"/>
+        <javac  includeantruntime="false" srcdir="${basedir}/test" includes="**/*.java" destdir="target/testclasses">
+            <classpath refid="test.classpath.id"/>
+        </javac>
+    </target>
+
+    <target name="unittest" depends="compile-tests">
+        <junit dir="${basedir}/target/junit" haltonerror="true" haltonfailure="true">
+            <classpath refid="test.classpath.id"/>
+            <classpath>
+                <pathelement location="target/testclasses"/>
+            </classpath>
+            <test name="GulliTest"/>
+            <formatter type="brief" usefile="false"/>
+        </junit>
+    </target>
+
+    <target name="install">
+        <echo message="Installing helloworld to ${user.home}/temp/helloworld"/>
+        <copy todir="${user.home}/temp/helloworld" overwrite="true">
+            <fileset dir="${basedir}/doc">
+                <include name="*"/>
+            </fileset>
+            <fileset dir="${basedir}/bin">
+                <include name="*"/>
+            </fileset>
+            <fileset dir="${basedir}/target">
+                <include name="classes/**/*"/>
+            </fileset>
+        </copy>
+        <exec executable="chmod" osfamily="unix">
+            <arg value="+xxx"/>
+            <arg value="${user.home}/temp/helloworld/helloworld.sh"/>
+        </exec>
+    </target>
+
+    <target name="execute">
+        <exec osfamily="unix" dir="${user.home}/temp/helloworld/" executable="${user.home}/temp/helloworld/helloworld.sh"/>
+        <exec osfamily="windows" dir="${user.home}/temp/helloworld/" executable="${user.home}/temp/helloworld/helloworld.bat"/>
+    </target>
+
+    <target name="all" depends="clean, compile, compile-tests, unittest, install, execute"/>
+
+</project>
