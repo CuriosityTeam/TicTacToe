@@ -25,7 +25,7 @@ public class TicTacToe {
             printBoard();    //Ascii
             DrawFrame(256,256); //StandardDraw Gluggi
             DrawCanvas();
-            while (player1turn != 2 && player2turn != 2){ //meðan enginn er að vinna
+            while (player1turn != 2 && player2turn != 2){ //medan enginn er ad vinna
                 makeMove();
                 switchPl();
                 printBoard();
@@ -102,7 +102,7 @@ public class TicTacToe {
         if (board[6]=='O' && board[7]=='O' && board[8]=='O')
             player2turn = 2;
     }
-    public void printBoard (){ //óþarfi
+    public void printBoard (){ //otharfi
         int i = 0;
         while (i < 9){
             StdOut.print("[" + board[(i)] + "]");
@@ -110,7 +110,7 @@ public class TicTacToe {
             i++;
         }
     }
-    public void prepairBoard() { //play again, væri hægt að nota while loopu líka í main
+    public void prepairBoard() { //play again, vaeri haegt ad nota while loopu lika i main
         if (NrOfGames == 0){
             StdOut.println("Enter player 1 name: ");
             Scanner scan = new Scanner(System.in);
