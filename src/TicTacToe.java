@@ -11,8 +11,6 @@ public class TicTacToe {
     int player2turn = 0;  //0:Not players turn, 1:Players turn, 2:Player won 
     
     int NrOfGames = 0;
-
-
     /*
     [1,2,3
      4,5,6
